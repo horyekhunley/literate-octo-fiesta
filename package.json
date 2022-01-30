@@ -1,0 +1,32 @@
+{
+  "name": "literate-octo-fiesta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horyekhunley/literate-octo-fiesta.git"
+  },
+  "keywords": ["node", "express", "mongodb", "mongoose", "rest", "api"],
+  "author": "Mahbub Bello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horyekhunley/literate-octo-fiesta/issues"
+  },
+  "homepage": "https://github.com/horyekhunley/literate-octo-fiesta#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "ip": "^1.1.5",
+    "joi": "^17.6.0",
+    "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
