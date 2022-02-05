@@ -24,20 +24,20 @@ exports.getAllPatients = async (req, res) => {
 exports.getPatientById = async (req, res) => {
 	//first validate request
 	const { error } = validate(req.body);
-	if (error) return res.status(400).send(error.details[0].message);
+	if (error) return res.status(HttpStatus.BAD_REQUEST.code).send(error.details[0].message);
 
-	const customer = await Customer.findById(req.params.id);
+	const patient = await Patient.findById(req.params.id);
 
-	if (!customer)
-		return res.status(404).send("The customer with the given id was not found");
+	if (!patient)
+		return res.status(HttpStatus.NOT_FOUND.code).send("The patient with the given id was not found");
 
-	res.send(customer);
+	res.send(patient);
 };
 
 exports.createPatient = async (req, res) => {
 	//first validate request
 	const { error } = validate(req.body);
-	if (error) return res.status(400).send(error.details[0].message);
+	if (error) return res.status(HttpStatus.BAD_REQUEST.code).send(error.details[0].message);
 
 	const patient = new Patient({ ...req.body });
 	await patient.save();
@@ -48,7 +48,7 @@ exports.createPatient = async (req, res) => {
 exports.updatePatient = async (req, res) => {
 	//first validate request
 	const { error } = validate(req.body);
-	if (error) return res.status(400).send(error.details[0].message);
+	if (error) return res.status(HttpStatus.BAD_REQUEST.code).send(error.details[0].message);
 
 	const patient = await Patient.findByIdAndUpdate(
 		req.params.id,
@@ -57,7 +57,7 @@ exports.updatePatient = async (req, res) => {
 	);
 
 	if (!patient)
-		return res.status(404).send("The patient with the given id was not found");
+		return res.status(HttpStatus.NOT_FOUND.code).send("The patient with the given id was not found");
 
 	res.send(patient);
 };
@@ -65,12 +65,12 @@ exports.updatePatient = async (req, res) => {
 exports.deletePatient = async (req, res) => {
 	//first validate request
 	const { error } = validate(req.body);
-	if (error) return res.status(400).send(error.details[0].message);
+	if (error) return res.status(HttpStatus.BAD_REQUEST.code).send(error.details[0].message);
 
 	const patient = await Patient.findByIdAndRemove(req.params.id);
 
 	if (!patient)
-		return res.status(404).send("The patient with the given id was not found");
+		return res.status(HttpStatus.NOT_FOUND.code).send("The patient with the given id was not found");
 
 	res.send(patient);
 };
